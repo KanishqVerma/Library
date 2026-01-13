@@ -15,7 +15,8 @@
     <div class="main">
         <button class="add-button">+</button>
         <div class="card-container">
-            <div class="book-read">
+            Add more books using the + icon.
+            <!-- <div class="book-read">
                 <div class="card-section-1">
                     <div class="book-title">
                         <h3>A Song of Ice and Fire</h3>
@@ -50,8 +51,8 @@
                 </div>
                 <div class="card-section-2">
                     <div class="read-status">
-                        <input type="checkbox" id="read-status-checkbox">
-                        <label for="read-status-checkbox" class="unread-label">Unread</label>
+                        <input type="checkbox" id="unread-status-checkbox">
+                        <label for="unread-status-checkbox" class="unread-label">Unread</label>
                     </div>
                     <div class="delete-button">
                         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
@@ -59,7 +60,7 @@
                         <p>Delete</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="footer">
@@ -74,15 +75,15 @@
             <div class="fomr-questions-container">
                 <div class="form-questions">
                     <label for="form-book-title">Title: </label>
-                    <input type="text" name="title" id="form-book-title" autofocus>
+                    <input type="text" name="title" id="form-book-title" autofocus required>
                 </div>
                 <div class="form-questions">
                     <label for="form-book-author">Author: </label>
-                    <input type="text" name="author" id="form-book-author">
+                    <input type="text" name="author" id="form-book-author" required>
                 </div>
                 <div class="form-questions">
                     <label for="form-book-pages">No. of Pages: </label>
-                    <input type="number" name="pages" min="1" max="49000">
+                    <input type="number" name="pages" id="form-book-pages" min="1" max="49000" required>
                 </div>
                 <div class="form-questions">
                     <input type="checkbox" id="form-book-status" name="read-status">
@@ -91,7 +92,7 @@
             </div>
             <div class="form-buttons">
                 <button class="dialog-add-button">Add Book</button>
-                <button class="dialog-close-button">Close</button>
+                <button class="dialog-close-button" formmethod="dialog" formnovalidate>Cancel</button>
             </div>
         </form>
     </dialog>
