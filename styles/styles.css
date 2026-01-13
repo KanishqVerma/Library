@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+*:not(dialog){
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Roboto', 'sans-serif';
+    background-color: beige;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header{
+    background-color: #F16D34;
+    padding: 8px;
+    color: rgb(235, 255, 174);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    font-size: 4rem;
+}
+
+.main{
+    padding-top: 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.add-button{
+    background-color: rgb(219, 216, 216);
+    border: 2px solid grey;
+    border-radius: 50%;
+    font-size: 3rem;
+    aspect-ratio: 1/1;
+    height: 60px;
+    width: 60px;
+    transition: background-color 0.2s ease-in-out;
+    user-select: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-button:hover{
+    background-color: grey;
+}
+
+.card-container{
+    background-color: #d9f4ff;
+    width: 97%;
+    border-radius: 12px;
+    margin: 1rem 2rem 2rem 2rem;
+    padding: 1rem;
+
+    flex: 1;
+    display: flex;
+    gap: 0.75rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.card-section-1{
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+}
+
+.book-title{
+    font-size: 1.1rem;
+
+    flex: 5;
+    display: flex;
+    align-items: center;
+}
+
+.read-status{
+    transition: transform 0.2s ease-in-out;
+
+    flex: 2;
+    display: flex;
+    align-items: center;
+    padding: 0.6rem;
+}
+
+.read-label, .unread-label{
+    padding-left: 0.4rem;
+}
+
+.card-section-2{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.book-info{
+    flex: 5;
+    display: flex;
+    gap: 8px;   
+    align-items: center;
+}
+
+input[type="checkbox"]{
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+.delete-button{
+    background-color: rgb(229, 99, 99);
+    color: white;
+    border-radius: 8px;
+    width: 90px;
+    transition: transform 0.2s ease-in-out;
+
+    flex: 2;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.delete-button:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.book-read{
+    background-color: #7fd1f2;
+    border-radius: 12px;
+    padding: 1rem;
+    margin: 0.2rem 0.6;
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+}
+
+.book-unread{
+    background-color: #7fd1f2;
+    border-radius: 12px;
+    padding: 1rem;
+    margin: 0.2rem 0.6;
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+}
+
+.footer{
+    background-color: #161E54;
+    color: white;
+    height: 2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a{
+    color: #BBE0EF;
+    transitioN: color 0.2s ease-in;
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a:hover{
+    color: #FF986A;
+}
+
+svg{
+    margin: 4px;
+}
+
+dialog{
+    background-color: beige;
+    border: 2px solid rgb(117, 117, 103);
+    box-shadow: 0px 0px 8px black;
+}
+
+.form-questions-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.form-questions{
+    margin: 1rem 1rem 1rem 0;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.form-questions label{
+    width: 100px;
+}
+
+.form-questions input[type="checkbox"] + label{
+    width: 150px;
+}
+
+
+.form-questions input{
+    border-radius: 8px;
+    font-size: small;
+}
+
+.form-questions input[type="text"], .form-questions input[type="number"]{
+    background-color: white;
+    width: 200px;
+    padding: 4px;
+    height: 1.4rem;
+    margin-left: 8px;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.form-questions input[type="checkbox"]{
+    margin: 1rem 1rem 1rem 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.form-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.dialog-add-button{
+    background-color: greenyellow;
+    width: 75px;
+    height: 30px;
+    border-radius: 999px;
+    border: 2px solid green;
+    transition: background-color, color 0.3s ease-in-out;
+}
+
+.dialog-add-button:hover{
+    background-color: rgb(85, 126, 23);
+    color: white;
+}
+
+.dialog-close-button{
+    background-color: #E56363;
+    width: 75px;
+    height: 30px;
+    border-radius: 999px;
+    border: 2px solid red;
+    transition: background-color, color 0.3s ease-in-out;
+}
+
+.dialog-close-button:hover{
+    background-color: #b45252;
+    color: white;
+}
+
+dialog::backdrop{
+    background-color: black;
+    opacity: 0.6;
+}
