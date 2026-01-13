@@ -1,9 +1,9 @@
 // array that stores all the book objects
-const myLibrary = [];
+let myLibrary = [];
 
-function deleteBook(book){
-
-}
+function deleteBook(item){
+    myLibrary = myLibrary.filter(book => book.id !== item.id);
+};
 
 // book {id: 012dsanjofsao, title: A Song of Ice and Fire, author: George R.R. Martin, pages: 1024, status: false}
 // book constructor
@@ -61,6 +61,8 @@ function createBookRead(bookItem){
     const inputCheck = document.createElement("input");
     inputCheck.type = "checkbox";
     inputCheck.id = "read-status-checkbox";
+    inputCheck.checked = true;
+
     const labelCheck = document.createElement("label");
     labelCheck.for = "read-status-checkbox";
     labelCheck.classList.add("read-label");
@@ -76,6 +78,8 @@ function createBookRead(bookItem){
     deleteText.textContent = "Delete";
 
     deleteButton.appendChild(deleteText);
+    
+    console.log(myLibrary);
 
     cardSection2.append(readStatus, deleteButton);
 
@@ -83,6 +87,22 @@ function createBookRead(bookItem){
     
     const cardContainer = document.querySelector(".card-container");
     cardContainer.appendChild(bookRead);
+
+    deleteButton.addEventListener("click", () => {
+        bookRead.remove();
+        deleteBook(bookItem);
+    });
+
+    inputCheck.addEventListener("change", () => {
+        if (inputCheck.checked === true){
+            labelCheck.textContent = "Read";
+            bookItem.status = true;
+        } 
+        else if (!inputCheck.checked){
+            labelCheck.textContent = "Unread";
+            bookItem.status = false;
+        }
+    });
 }
 
 function createBookUnread(bookItem){
@@ -123,6 +143,8 @@ function createBookUnread(bookItem){
     const inputCheck = document.createElement("input");
     inputCheck.type = "checkbox";
     inputCheck.id = "unread-status-checkbox";
+    inputCheck.checked = false;
+
     const labelCheck = document.createElement("label");
     labelCheck.for = "unread-status-checkbox";
     labelCheck.classList.add("unread-label");
@@ -145,30 +167,22 @@ function createBookUnread(bookItem){
 
     const cardContainer = document.querySelector(".card-container");
     cardContainer.appendChild(bookUnread);
-}
 
-Book.prototype.getId = function(){
-    return this.id;
-}
+    deleteButton.addEventListener("click", () => {
+        bookUnread.remove();
+        deleteBook(bookItem);
+    });
 
-Book.prototype.getTitle = function(){
-    return this.title;
-}
-
-Book.prototype.getAuthor = function(){
-    return this.author;
-}
-
-Book.prototype.getPages = function(){
-    return this.pages;
-}
-
-Book.prototype.getStatus = function(){
-    return this.status;
-}
-
-Book.prototype.toggleStatus = function(){
-    this.status = !this.status;
+    inputCheck.addEventListener("change", () => {
+        if (inputCheck.checked === true){
+            labelCheck.textContent = "Read";
+            bookItem.status = true;
+        } 
+        else if (!inputCheck.checked){
+            labelCheck.textContent = "Unread";
+            bookItem.status = false;
+        }
+    });
 }
 
 //open a modal dialog box
@@ -176,6 +190,11 @@ const addBook = document.querySelector(".add-button");
 const dialog = document.querySelector("dialog");
 const closeButton = document.querySelector(".dialog-close-button");
 const addButton = document.querySelector(".dialog-add-button");
+const bookContainer = document.querySelector(".card-container");
+const deleteCardButtons = document.querySelectorAll(".delete-button");
+const form = document.querySelector("form");
+
+console.log(deleteCardButtons);
 
 addBook.addEventListener("click", () => {
     dialog.showModal();
@@ -191,14 +210,23 @@ dialog.addEventListener("click", e => {
     }
 });
 
-addButton.addEventListener("click", () => {
+form.addEventListener("submit", () => {
     const inputBookName = document.querySelector("#form-book-title");
-    const inputbookAuthor = document.querySelector("#form-book-author");
+    const inputBookAuthor = document.querySelector("#form-book-author");
     const inputBookPages = document.querySelector("#form-book-pages")
     const inputBookStatus = document.querySelector("#form-book-status");
 
-    addBookToLibrary(inputBookName.value, inputbookAuthor.value, inputBookPages.value, inputBookStatus.checked);
-    console.log(myLibrary);
+    // if (!(inputBookName.checkValidity() && inputBookAuthor.checkValidity() && inputBookStatus.checkValidity() && inputBookPages.checkValidity())) {
+    //   return;
+    // }
+
+    addBookToLibrary(inputBookName.value, inputBookAuthor.value, inputBookPages.value, inputBookStatus.checked);
+
+    if (myLibrary.length != 0){
+        bookContainer.textContent = "";
+    }
+
+    bookContainer.innerHTML = "";
 
     myLibrary.forEach((item) => {
         if (item.status === true){
@@ -208,5 +236,16 @@ addButton.addEventListener("click", () => {
             createBookUnread(item);
         }
     })
+    inputBookName.value = "";
+    inputBookAuthor.value = "";
+    inputBookPages.value = "";
+    inputBookStatus.checked = false;
+
+    // dialog.close();
 });
 
+// deleteCardButtons.forEach((item) => {
+//     item.addEventListener("click", () => {
+//         myLibrary = myLibrary.filter(book => book.id !== item.id);
+//     });
+// });
